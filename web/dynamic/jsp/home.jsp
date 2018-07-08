@@ -71,6 +71,7 @@
                                     <th>Valor unitario </th>
                                     <th>Valor Total </th>
                                     <th>Editar </th>
+                                    <th>Deletar </th>
                                 </thead>
                                 <tbody id="gdTbItens">
 
