@@ -55,4 +55,13 @@ and open the template in the editor.
         <servlet-name>EdtItem</servlet-name>
         <url-pattern>/EditarItem</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>DelItem</servlet-name>
+        <servlet-class>web.servlet.DelItem</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>DelItem</servlet-name>
+        <url-pattern>/DeletarItem</url-pattern>
+    </servlet-mapping>
 </web-app>
