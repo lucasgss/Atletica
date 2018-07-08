@@ -51,19 +51,19 @@
                         </div>
 
 
-                        <form role="form" action="atletica/Autenticador.action">
+                        <form role="form" action="atletica/Home"  method="post">
                                 <div class="form-group">
                                         <label for="InputEmail">
                                                 Login
                                         </label>
-                                        <input type="email" required class="form-control" id="InputEmail">
+                                        <input name="email" type="email" required class="form-control" id="InputEmail">
                                 </div>
                                 <div class="form-group">
 
                                         <label for="InputPassword">
                                                 Senha
                                         </label>
-                                        <input type="password" required class="form-control" id="InputSenha">
+                                        <input name="senha" type="password" required class="form-control" id="InputSenha">
                                 </div>
                                 <button type="submit" id="logar" class="btn btn-primary">
                                         Entrar

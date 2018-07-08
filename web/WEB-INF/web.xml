@@ -33,7 +33,17 @@ and open the template in the editor.
     
     <servlet-mapping>
         <servlet-name>Autenticador</servlet-name>
-        <url-pattern>/Autenticador.action</url-pattern>
+        <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddItem</servlet-name>
+        <servlet-class>web.servlet.AddItem</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AddItem</servlet-name>
+        <url-pattern>/AdicionarItem</url-pattern>
     </servlet-mapping>
     
 </web-app>

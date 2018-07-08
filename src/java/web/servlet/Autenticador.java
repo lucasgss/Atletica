@@ -29,7 +29,7 @@ public class Autenticador extends HttpServlet {
         try{
             req.setCharacterEncoding("UTF-8"); 
         }catch(Exception e){} 
-        String nomeUsuario = req.getParameter("nomeUsuario");
+        String nomeUsuario = req.getParameter("email");
         String senha = req.getParameter("senha");
         ServicoUsuario sUsuario = new ServicoUsuarioImpl();
         Usuario uBD = sUsuario.findByEmail(nomeUsuario);      

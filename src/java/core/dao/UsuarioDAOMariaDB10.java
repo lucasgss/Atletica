@@ -56,7 +56,7 @@ public class UsuarioDAOMariaDB10 implements UsuarioDAO{
             u.setId(rs.getLong(1));
             u.setNome(rs.getString(2));
             u.setSenha(rs.getString(3));
-            u.setEmail(rs.getString(5));           
+            u.setEmail(rs.getString(4));           
             /* Se utilizar o padrão singleton, não fechar a conexão. */
             comandoSQLp.close();
             rs.close();
@@ -83,7 +83,7 @@ public class UsuarioDAOMariaDB10 implements UsuarioDAO{
             u.setId(rs.getLong(1));
             u.setNome(rs.getString(2));
             u.setSenha(rs.getString(3));
-            u.setEmail(rs.getString(5));            
+            u.setEmail(rs.getString(4));            
             /* Se utilizar o padrão singleton, não fechar a conexão. */
             comandoSQLp.close();
             rs.close();

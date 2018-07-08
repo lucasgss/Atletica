@@ -12,7 +12,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -71,11 +73,12 @@ public class ItemDAOMariaDB10 implements ItemDao {
             int c = 0;
             while (rs.next()) {
                 c+=1;
-                System.out.println("Lendo Item ${c}");
+                System.out.println("Lendo Item " + c);
                 Item i = new Item();
                 i.setId(rs.getLong(1));
-                i.setQuantidade(rs.getInt(2));
-                i.setValor(rs.getDouble(3));
+                i.setDescricao(rs.getString(2));
+                i.setQuantidade(rs.getInt(3));
+                i.setValor(rs.getDouble(4));
                 l.add(i);
             }
         }
