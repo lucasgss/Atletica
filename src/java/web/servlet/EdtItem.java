@@ -6,6 +6,7 @@
 package web.servlet;
 
 import api.modelo.Item;
+import com.google.gson.Gson;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Lucas Soares
  */
-public class AddItem extends HttpServlet {
+public class EdtItem extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) {
@@ -33,6 +34,7 @@ public class AddItem extends HttpServlet {
         }
 
         try {
+            long id = Long.parseLong(req.getParameter("id"));
             String descricao = req.getParameter("descricao");
             int quantidade = Integer.parseInt(req.getParameter("quantidade"));
             double valor = Double.parseDouble(req.getParameter("valor"));
@@ -40,23 +42,19 @@ public class AddItem extends HttpServlet {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("AtleticaPU");
             EntityManager em = emf.createEntityManager();
 
-            Item i = new Item();
+            Item i = em.find(Item.class, id);
+            em.getTransaction().begin();
             i.setDescricao(descricao);
             i.setQuantidade(quantidade);
             i.setValor(valor);
-            em.getTransaction().begin();
-            em.persist(i);
             em.getTransaction().commit();
 
             em.close();
             emf.close();
             //if request is not from HttpServletRequest, you should do a typecast before
-            HttpSession session = req.getSession(false);
+            //HttpSession session = req.getSession(false);
             //save message in session
-            session.setAttribute("itemAdicionado", true);
-            //req.setAttribute("itemAdicionado", true);
-            //RequestDispatcher rd = req.getRequestDispatcher("Home");
-            //rd.forward(req, resp);
+            //session.setAttribute("itemAdicionado", true);
             resp.sendRedirect("Home");
             //sc.getRequestDispatcher("/dynamic/jsp/home.jsp").forward(req, resp); 
         } catch (Exception e) {
@@ -73,12 +71,34 @@ public class AddItem extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        if (req.getParameter("id") == null) {
+            System.out.println("parametro id para editar vazio!");
+        } else {
+            ServletContext sc = req.getServletContext();
+            try {
+                long id = Long.parseLong(req.getParameter("id"));
+                EntityManagerFactory emf = Persistence.createEntityManagerFactory("AtleticaPU");
+                EntityManager em = emf.createEntityManager();
 
-        ServletContext sc = req.getServletContext();
-        try {
-            req.getServletContext().getRequestDispatcher("/dynamic/jsp/addItem.jsp").forward(req, resp);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+                Item i = em.find(Item.class, id);
+                Gson gson = new Gson();
+                String jsonItem = gson.toJson(i);
+                
+                req.setAttribute("id", id);
+                req.setAttribute("itemEditar", jsonItem);
+
+                em.close();
+                emf.close();
+                req.getServletContext().getRequestDispatcher("/dynamic/jsp/edtItem.jsp").forward(req, resp);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                try {
+                    resp.sendRedirect("Home");
+                } catch (Exception ex) {
+
+                }
+            }
         }
+
     }
-}//AddItem.java
+}//EdtItem.java

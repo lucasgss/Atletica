@@ -23,15 +23,22 @@
 
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-        <title>Atlética XXII de Setembro - Adicionar itens</title>
+        <title>Atlética XXII de Setembro - Editar item</title>
         <script>
             $(document).ready(function () {
                 var cancelar = document.getElementById("btnCancelar");
                 cancelar.addEventListener("click", function () {
                     history.back();
                 }, true);
-
+                var Item = getItem();
+                $("#item").val(Item.descricao);
+                $("#quantidade").val(Item.quantidade);
+                $("#valorUnitario").val(Item.valor);
             });
+            function getItem() {
+                var json = <%= (String) request.getAttribute("itemEditar")%>
+                return json;
+            }
         </script>
         <style type="text/css">
             body{
@@ -40,7 +47,7 @@
         </style>
     </head>
     <body>
-        <% String action = "AdicionarItem"; %>
-         <%@include file= "baseItem.jsp" %>    
+        <% String action = "EditarItem"; %>
+        <%@include file= "baseItem.jsp" %>
     </body>
 </html>

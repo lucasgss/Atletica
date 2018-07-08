@@ -40,37 +40,7 @@
         </style>
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <form role="form" action="inventario.html" method="post">
-                        <div class="form-group">
-                            <label for="item">
-                                Item
-                            </label>
-                            <input name="descricao" type="text" required class="form-control" id="item" />
-                        </div>
-                        <div class="form-group">
-                            <label for="quantidade">
-                                Quantidade
-                            </label>
-                            <input name="quantidade" type="number" required class="form-control" id="quantidade" />
-                        </div>
-                        <div class="form-group">
-                            <label for="valorUnitario">
-                                Valor unitario
-                            </label>
-                            <input name="valor" type="number" required class="form-control" id="valorUnitario" />
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            Enviar
-                        </button> 
-                        <button type="button" id="btnCancelar" class="btn btn-secondary">
-                            Cancelar
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <% String action = "AdicionarItem"; %>
+         <%@include file= "baseItem.jsp" %>    
     </body>
 </html>
