@@ -7,7 +7,6 @@ function montaGrid(){
     Js = getItens();
     if (Js.length == 0){
             $("#semDados").show();
-
             return;
     }
 
@@ -16,10 +15,11 @@ function montaGrid(){
             var t = Js[i];
             content +="<tr>";
             content += "<td>" + t.id + "</td>";
-            content += "<td>" + t.Item + "</td>";
+            content += "<td>" + t.descricao + "</td>";
             content += "<td id='qtd"+t.id+"'>" + t.quantidade + "</td>";
-            content += "<td>" + t.valorUnitario + "</td>";
-            content += "<td>" + (t.quantidade * t.valorUnitario) + "</td>";
+            content += "<td> R$" + t.valor + "</td>";
+            content += "<td> R$" + (t.quantidade * t.valor) + "</td>";
+            content += "<td> <a href='EditarItem?id=" + t.id + "'><i class='fas fa-edit'></i></a></td>";
             content +="</tr>";
     }
     $("#gdTbItens").html(content);

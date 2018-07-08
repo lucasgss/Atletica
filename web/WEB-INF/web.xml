@@ -46,4 +46,13 @@ and open the template in the editor.
         <url-pattern>/AdicionarItem</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>EdtItem</servlet-name>
+        <servlet-class>web.servlet.EdtItem</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>EdtItem</servlet-name>
+        <url-pattern>/EditarItem</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -17,18 +17,18 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="atletica/static/js/home.js"></script>
+        <script src="static/js/home.js"></script>
 
         <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-        <link type="text/css" rel="stylesheet" href="atletica/static/css/home.css" />
-
+        <link type="text/css" rel="stylesheet" href="static/css/home.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
         <title>Atlética XXII de Setembro - Lista de itens</title>
         <script>
             function getItens() {
                 var json = <%= (String) request.getAttribute("itens")%>
-                return JSON.parse(json);
+                return json;
             }
         </script>
     </head>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form role="form" action="atletica/AdicionarItem" method="get">
+                    <form role="form" action="AdicionarItem" method="get">
                         <button type="submit" id="logar" class="btn btn-primary">
                             Adicionar Item
                         </button>
@@ -65,11 +65,12 @@
                         <div> 
                             <table id="jsGrid" style="width:100%">
                                 <thead>
-                                <th>Id</th>
-                                <th>Item </th>
-                                <th>Quantidade </th>
-                                <th>Valor unitario </th>
-                                <th>Valor Total </th>
+                                    <th>Id</th>
+                                    <th>Item </th>
+                                    <th>Quantidade </th>
+                                    <th>Valor unitario </th>
+                                    <th>Valor Total </th>
+                                    <th>Editar </th>
                                 </thead>
                                 <tbody id="gdTbItens">
 
@@ -81,5 +82,8 @@
                 </div>
             </div>
         </div>
+        <form method="post" action="EditarItem" style="display:none;">
+            <input type="hidden" name="itemId" value="">
+        </form>
     </body>
 </html>
